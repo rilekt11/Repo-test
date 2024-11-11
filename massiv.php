@@ -1,8 +1,102 @@
 <?php
 
-//задание3
+//Задание 5
+//Для группы учащихся известны годовые оценки по следующим предметам:
+// математика, физика, химия, информатика.
+// Найти среднюю в группе оценку по каждому из предметов.
+// Суммирование оценок по каждому предмету.
+$grades = [
+    'Понамарев' => [
+        'математика' => 4,
+        'физика' => 4,
+        'химия' => 5,
+        'информатика' => 5
+    ],
+    'Ковалёва' => [
+        'математика' => 5,
+        'физика' => 4,
+        'химия' => 4,
+        'информатика' => 3
+    ],
+    'Максимов' => [
+        'математика' => 3,
+        'физика' => 5,
+        'химия' => 4,
+        'информатика' => 5
+    ],
+    'Ефремова' => [
+        'математика' => 3,
+        'физика' => 5,
+        'химия' => 5,
+        'информатика' => 4
+    ]
+];
+foreach ($grades as $student => $studentGrades){
+    echo "<br>$student:<br>";
+
+    foreach ($studentGrades as $subject => $grade){
+        echo "$subject - $grade, <br>";
+    }
+}
+
+$sumGrades = [
+    'математика' => 0,
+    'физика' => 0,
+    'химия' => 0,
+    'информатика' => 0
+];
+
+foreach ($grades as $student => $studentGrades){
+    $sumGrades['математика'] += $studentGrades['математика'];
+    $sumGrades['физика'] += $studentGrades['физика'];
+    $sumGrades['химия'] += $studentGrades['химия'];
+    $sumGrades['информатика'] += $studentGrades['информатика'];
+}
+echo "<br>Сумма оценок по каждому предмету:";
+foreach ($sumGrades as $subject => $total){
+    echo "<br>$subject: $total";
+}
+
+$quantityStudent = count($grades);
+
+$averageGrades = [];
+foreach ($sumGrades as $subject => $total){
+    $averageGrades[$subject] = $total / $quantityStudent;
+}
+echo '<br>';
+echo "<br>Средняя оценка по каждому предмету:";
+foreach ($averageGrades as $subject => $average){
+    echo "<br>$subject: " . round($average, 2);
+}
 
 
+
+
+
+//задание4
+//$N = 10;
+//$randomArray = [];
+//for ($i = 0; $i < $N; $i++){
+//    $randomArray[] = mt_rand(-100, 100);
+//}
+//echo "Массив: " . implode(', ', $randomArray);
+//
+//$minPositive = 0;
+//$maxNegative = 0;
+//
+//foreach ($randomArray as $value){
+//    if ($value > 0 && ($minPositive === 0 || $value < $minPositive)){
+//        $minPositive = $value;
+//    }
+//    if ($value < 0 && ($maxNegative === 0 || $value > $maxNegative)){
+//        $maxNegative = $value;
+//    }
+//}
+//
+//echo '<br>';
+//echo "Минимальное положительное число = " . $minPositive;
+//echo '<br>';
+//echo "Максимальное отрицательное число = " . $maxNegative;
 
 //задание2
 //$arr9 = [];
